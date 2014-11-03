@@ -40,6 +40,8 @@ autocmd GUIEnter * set visualbell t_vb=
 
 " Ergonomic shortcut for Esc
 :imap jk <Esc>
+" Toggle NERDTree
+:nmap \e :NERDTreeToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
