@@ -49,3 +49,4 @@ autocmd GUIEnter * set visualbell t_vb=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
+let NERDTreeShowBookmarks=1
