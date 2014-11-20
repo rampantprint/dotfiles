@@ -33,6 +33,9 @@ set hlsearch
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Turn off brace matching for cursor legibility
+let loaded_matchparen=1
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
@@ -51,3 +54,12 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 autocmd vimenter * NERDTree
 let NERDTreeShowBookmarks=1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'php' : 1,
+    \}
+
