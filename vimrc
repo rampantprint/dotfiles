@@ -7,7 +7,7 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=light
 colorscheme solarized
-
+" colorscheme desert
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -46,12 +46,20 @@ let loaded_matchparen=1
 " Toggle NERDTree
 :nmap \e :NERDTreeToggle<CR>
 
+" Move to the next buffer
+nmap <leader>[ :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>] :bprevious<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:indent_guides_enable_on_vim_startup = 1
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 autocmd vimenter * NERDTree
 let NERDTreeShowBookmarks=1
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
