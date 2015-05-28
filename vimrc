@@ -7,7 +7,16 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=light
 colorscheme solarized
+"g:solarized_contrast = "high"
 " colorscheme desert
+
+if has('gui_running')
+  set guifont=Menlo\ Regular:h12
+endif
+
+"if has("gui_macvim")
+"    set transparency=7
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -52,6 +61,10 @@ nmap <leader>[ :bnext<CR>
 " Move to the previous buffer
 nmap <leader>] :bprevious<CR>
 
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>- :bp <BAR> bd #<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc Plugin Settings
@@ -70,4 +83,6 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'php' : 1,
     \}
+
+let g:used_javascript_libs = 'angularjs,jquery'
 
