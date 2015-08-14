@@ -7,7 +7,16 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=light
 colorscheme solarized
+"g:solarized_contrast = "high"
 " colorscheme desert
+
+if has('gui_running')
+  set guifont=Menlo\ Regular:h12
+endif
+
+"if has("gui_macvim")
+"    set transparency=7
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -47,10 +56,14 @@ let loaded_matchparen=1
 :nmap \e :NERDTreeToggle<CR>
 
 " Move to the next buffer
-nmap <leader>[ :bnext<CR>
+nmap <leader>] :bnext<CR>
 
 " Move to the previous buffer
-nmap <leader>] :bprevious<CR>
+nmap <leader>[ :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>- :bp <BAR> bd #<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -60,14 +73,35 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+"let g:airline_powerline_fonts = 1
 autocmd vimenter * NERDTree
 let NERDTreeShowBookmarks=1
-"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" MatchTagAlways
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
     \ 'xml' : 1,
     \ 'php' : 1,
     \}
+
+" javascript-libraries-syntax.vim
+let g:used_javascript_libs = 'angularjs,jquery'
+
+"" setup SyntaxComplete for every filetype that does not already have a language specific OMNI script
+if has("autocmd") && exists("+omnifunc")
+	autocmd Filetype *
+		    \	if &omnifunc == "" |
+		    \		setlocal omnifunc=syntaxcomplete#Complete |
+		    \	endif
+    endif
+
+"" Tagbar
+" Show Tagbar on PHP by default
+"autocmd FileType php call SetPHPOptions()
+"function! SetPHPOptions()
+"    :call tagbar#autoopen(0)
+"endfunction
 
