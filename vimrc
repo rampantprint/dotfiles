@@ -7,7 +7,6 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=light
 colorscheme solarized
-"g:solarized_contrast = "high"
 " colorscheme desert
 
 if has('gui_running')
@@ -74,7 +73,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:airline_powerline_fonts = 1
-autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree | wincmd p
 let NERDTreeShowBookmarks=1
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -97,6 +96,9 @@ if has("autocmd") && exists("+omnifunc")
 		    \		setlocal omnifunc=syntaxcomplete#Complete |
 		    \	endif
     endif
+
+" Ignore angular directives 
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 
 "" Tagbar
 " Show Tagbar on PHP by default
