@@ -5,17 +5,19 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=light
-colorscheme solarized
-" colorscheme desert
+set background=dark
+"colorscheme solarized
+"colorscheme desert
+"colorscheme base16-eighties
+colorscheme base16-ocean
 
 if has('gui_running')
   set guifont=Menlo\ Regular:h12
 endif
 
-"if has("gui_macvim")
-"    set transparency=7
-"endif
+if has("gui_macvim")
+    set transparency=5
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -26,6 +28,7 @@ set nu!
 set spell
 set lbr!
 set smartindent
+set cursorline
 
 " 4 Spaces, not 1 tab
 set tabstop=4  
