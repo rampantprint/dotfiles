@@ -6,13 +6,15 @@ call pathogen#infect()
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
+"set background=light
+"colorscheme base16-solarized-light
 "colorscheme solarized
 "colorscheme desert
 "colorscheme base16-eighties
 colorscheme base16-ocean
 
 if has('gui_running')
-  set guifont=Menlo\ Regular:h12
+  set guifont=Menlo\ Regular:h13
 endif
 
 if has("gui_macvim")
@@ -27,8 +29,10 @@ filetype plugin indent on
 set nu!
 set spell
 set lbr!
+set autoindent
 set smartindent
 set cursorline
+set hid
 
 " 4 Spaces, not 1 tab
 set tabstop=4  
