@@ -5,21 +5,21 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-"set background=light
+"set background=dark
+set background=light
 "colorscheme base16-solarized-light
-"colorscheme solarized
+colorscheme solarized
 "colorscheme desert
 "colorscheme base16-eighties
-colorscheme base16-ocean
+"colorscheme base16-ocean
 
 if has('gui_running')
   set guifont=Menlo\ Regular:h13
 endif
 
-if has("gui_macvim")
-    set transparency=5
-endif
+"if has("gui_macvim")
+"    set transparency=5
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
