@@ -1,25 +1,24 @@
 " Manage plugins with pathogen
 call pathogen#infect()
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set background=dark
-set background=light
+set background=dark
+colorscheme base16-eighties
+"set background=light
 "colorscheme base16-solarized-light
-colorscheme solarized
+"colorscheme solarized
+" Toggle solarized bkg
+"call togglebg#map("<F5>")
 "colorscheme desert
-"colorscheme base16-eighties
 "colorscheme base16-ocean
 
-if has('gui_running')
-  set guifont=Menlo\ Regular:h13
-endif
+set guifont=Source_Code_Pro_for_Powerline:h14
 
-"if has("gui_macvim")
-"    set transparency=5
-"endif
+if has("gui_macvim")
+    set transparency=3
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -33,11 +32,9 @@ set autoindent
 set smartindent
 set cursorline
 set hid
-
 " 4 Spaces, not 1 tab
 set tabstop=4  
 set shiftwidth=4
-
 set expandtab
 set laststatus=2
 
@@ -78,8 +75,10 @@ nmap <leader>- :bp <BAR> bd #<CR>
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='base16_eighties'
+" Hide path in tabs
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 autocmd vimenter * NERDTree | wincmd p
 let NERDTreeShowBookmarks=1
 " close vim if the only window left open is a NERDTree
@@ -113,4 +112,7 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 "function! SetPHPOptions()
 "    :call tagbar#autoopen(0)
 "endfunction
-
+"
+"
+" Autoformat hotkey
+noremap <F6> :Autoformat<CR>
