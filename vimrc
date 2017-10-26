@@ -4,12 +4,15 @@ call pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=dark
-colorscheme base16-eighties
+
+if has("gui_macvim")
+    set background=dark
+    colorscheme base16-eighties
+endif
 "set background=light
 "colorscheme base16-solarized-light
 "colorscheme solarized
-" Toggle solarized bkg
+"Toggle solarized bkg
 "call togglebg#map("<F5>")
 "colorscheme desert
 "colorscheme base16-ocean
@@ -23,6 +26,7 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 syntax on
 filetype plugin indent on
 set nu!
@@ -32,6 +36,7 @@ set autoindent
 set smartindent
 set cursorline
 set hid
+
 " 4 Spaces, not 1 tab
 set tabstop=4  
 set shiftwidth=4
@@ -48,13 +53,12 @@ autocmd GUIEnter * set visualbell t_vb=
 " Turn off brace matching for cursor legibility
 let loaded_matchparen=1
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Ergonomic shortcut for Esc
-:imap jk <Esc>
+:imap kj <Esc>
 " Toggle NERDTree
 :nmap \e :NERDTreeToggle<CR>
 
@@ -68,19 +72,21 @@ nmap <leader>[ :bprevious<CR>
 " This replicates the idea of closing a tab
 nmap <leader>- :bp <BAR> bd #<CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc Plugin Settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 let g:indent_guides_enable_on_vim_startup = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_eighties'
+
 " Hide path in tabs
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
-autocmd vimenter * NERDTree | wincmd p
+autocmd vimenter * NERDTree "| wincmd p
 let NERDTreeShowBookmarks=1
+
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -115,4 +121,5 @@ let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
 "
 "
 " Autoformat hotkey
+
 noremap <F6> :Autoformat<CR>
